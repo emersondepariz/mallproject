@@ -3,18 +3,22 @@ public class Loja {
     private String nome;
     private int quantidadeFuncionarios;
     private double salarioBaseFuncionario;
+    private Endereco endereco;
+    private Data dataFundacao;
 
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao) {
         //primeiro método construtor
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
     }
 
     // TODO: e se converter os argumentos?
-    public Loja(String nome, int quantidadeFuncionarios) {
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
         //segundo método construtor, usando uma categoria do polimorfismo chamado sobrecarga.
-        this(nome, quantidadeFuncionarios, -1);
+        this(nome, quantidadeFuncionarios, -1, endereco, dataFundacao);
     }
 
     public String getNome() {
@@ -43,12 +47,30 @@ public class Loja {
         this.salarioBaseFuncionario = salarioBaseFuncionario;
     }
 
+    public Endereco getEndereco () {
+        return endereco; 
+    }
+
+    public void setEndereco (Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Data getDataFundacao () {
+        return dataFundacao;
+    }
+
+    public void setDataFundacao (Data dataFundacao) {
+        this.dataFundacao = dataFundacao;
+    }
+
     @Override
     public String toString() {
         return "Loja{" +
                 "nome='" + nome + '\'' +
                 ", quantidadeFuncionarios=" + quantidadeFuncionarios +
                 ", salarioBaseFuncionario=" + salarioBaseFuncionario +
+                ", endereco=" + endereco + 
+                ", dataFundacao=" + dataFundacao +
                 '}';
     }
 
