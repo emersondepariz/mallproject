@@ -48,7 +48,7 @@ public class Loja {
     }
 
     public Endereco getEndereco () {
-        return endereco; 
+        return endereco;
     }
 
     public void setEndereco (Endereco endereco) {
@@ -69,7 +69,7 @@ public class Loja {
                 "nome='" + nome + '\'' +
                 ", quantidadeFuncionarios=" + quantidadeFuncionarios +
                 ", salarioBaseFuncionario=" + salarioBaseFuncionario +
-                ", endereco=" + endereco + 
+                ", endereco=" + endereco +
                 ", dataFundacao=" + dataFundacao +
                 '}';
     }
