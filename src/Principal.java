@@ -8,6 +8,7 @@ public class Principal {
             System.out.println("(1) Criar uma loja");
             System.out.println("(2) Criar um produto");
             System.out.println("(3) Sair");
+            System.out.print("Digite a opção desejada: ");
             int opcao = entradaUser.nextInt();
             entradaUser.nextLine(); // Consumir a nova linha
 
