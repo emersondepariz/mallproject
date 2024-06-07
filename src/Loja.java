@@ -5,20 +5,21 @@ public class Loja {
     private double salarioBaseFuncionario;
     private Endereco endereco;
     private Data dataFundacao;
+    private Produto[] estoqueProdutos;
 
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao) {
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao, int quantidadeMaximaProdutos) {
         //primeiro método construtor
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
     // TODO: e se converter os argumentos?
-    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao, int quantidadeMaximaProdutos) {
         //segundo método construtor, usando uma categoria do polimorfismo chamado sobrecarga.
-        this(nome, quantidadeFuncionarios, -1, endereco, dataFundacao);
+        this(nome, quantidadeFuncionarios, -1, endereco, dataFundacao, quantidadeMaximaProdutos);
     }
 
     public String getNome() {
@@ -63,15 +64,54 @@ public class Loja {
         this.dataFundacao = dataFundacao;
     }
 
+    public Produto[] getEstoqueProdutos () {
+        return estoqueProdutos;
+    }
+
+    public void imprimeProduto () {
+        for (Produto produto : estoqueProdutos){
+            if (produto != null) {
+                System.out.println(produto.toString());
+            }
+        }
+    }
+
+    public boolean insereProduto (Produto produto) {
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+            if (estoqueProdutos[i] == null) {
+                estoqueProdutos[i] = produto;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeProduto (String nomeProduto) {
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+            if (estoqueProdutos[i] != null && estoqueProdutos[i].getNome().equals(nomeProduto)){
+                estoqueProdutos[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
-        return "Loja{" +
+        String message =  "Loja{" +
                 "nome='" + nome + '\'' +
                 ", quantidadeFuncionarios=" + quantidadeFuncionarios +
                 ", salarioBaseFuncionario=" + salarioBaseFuncionario +
                 ", endereco=" + endereco +
                 ", dataFundacao=" + dataFundacao +
-                '}';
+                ", estoqueProdutos=[";
+            for(Produto produto : estoqueProdutos){
+                if(produto != null) {
+                    message = produto.toString() + ",";
+                }
+            }
+            message += "]}";
+        return message;
     }
 
     public double gastosComSalario() {
