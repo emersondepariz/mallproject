@@ -13,6 +13,7 @@ public class Loja {
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
         this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
     }
 
@@ -68,7 +69,7 @@ public class Loja {
         return estoqueProdutos;
     }
 
-    public void imprimeProduto () {
+    public void imprimeProdutos () {
         for (Produto produto : estoqueProdutos){
             if (produto != null) {
                 System.out.println(produto.toString());
